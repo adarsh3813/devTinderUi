@@ -1,12 +1,70 @@
-# React + Vite
+Tinder for Developers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tinder for Developers is a matchmaking app that helps developers find collaborators, mentors, or teammates based on their skills, interests, and project needs. Built using React, this app provides an intuitive swipe-based interface for making connections in the tech community.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔥 Swipe Left/Right - Like or Pass on potential developer matches.
 
-## Expanding the ESLint configuration
+💬 Chat System - Message your matches to discuss projects and ideas.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🛠 Tech Stack Matching - Matches based on preferred programming languages and frameworks.
+
+🎨 Customizable Profile - Showcase your skills, experience, and interests.
+
+📍 Location-Based Matching - Find developers near you.
+
+🔍 Search & Filter - Search by tech stacks, experience level, or collaboration type.
+
+Tech Stack
+
+Frontend: React, Tailwind CSS
+
+Backend: Node.js, Express.js
+
+Database: MongoDB
+
+Authentication: Firebase Auth / JWT
+
+Real-time Chat: Socket.io / Firebase Firestore
+
+Hosting: Vercel / Netlify (Frontend), Heroku / DigitalOcean (Backend)
+
+Installation & Setup
+
+Clone the repository:
+
+git clone https://github.com/yourusername/tinder-for-developers.git
+cd tinder-for-developers
+
+Install dependencies:
+
+npm install
+
+Create a .env file and add required environment variables (e.g., Firebase API keys, database URL).
+
+Start the development server:
+
+npm start
+
+Open http://localhost:3000 in your browser.
+
+Contribution
+
+Want to contribute? Follow these steps:
+
+Fork the repository.
+
+Create a new branch: git checkout -b feature-branch
+
+Make changes and commit: git commit -m "Added new feature"
+
+Push to the branch: git push origin feature-branch
+
+Open a Pull Request.
+
+License
+
+This project is licensed under the MIT License.
+
+Made with ❤️ by Developers, for Developers!
