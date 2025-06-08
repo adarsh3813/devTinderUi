@@ -1,13 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BASE_BACKEND_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "./utils/feedSlice";
-import UserCard from "./UserCard";
+import { NoMoreUser } from "./utils/UtillComponents";
+import UserFeedCard from "./UserFeedCard";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
-  // const [feed, setFeed] = useState();
   const dispatch = useDispatch();
 
   const getFeed = async () => {
@@ -17,7 +17,6 @@ const Feed = () => {
         withCredentials: true,
       });
       dispatch(addFeed(response.data.feed));
-      // setFeed(response.data.feed);
     } catch (err) {
       console.error(err);
     }
@@ -27,12 +26,12 @@ const Feed = () => {
     getFeed();
   }, []);
 
-  return (
-    feed && (
-      <div className="flex justify-center mt-2">
-        <UserCard user={feed[0]} />
-      </div>
-    )
+  return feed?.length > 0 ? (
+    <div className="flex w-full justify-center items-center h-[80vh]">
+      <UserFeedCard user={feed[0]} showActions={true} />
+    </div>
+  ) : (
+    <NoMoreUser />
   );
 };
 

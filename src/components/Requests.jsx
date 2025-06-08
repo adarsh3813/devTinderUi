@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_BACKEND_URL } from "../constants";
 import { ErrorToast, SuccessToast } from "./utils/UtillComponents";
 
@@ -81,32 +81,37 @@ const Requests = () => {
             return (
               <div
                 key={firstName}
-                className="grid grid-flow-col gap-4 bg-base-300 my-3 p-2 rounded-lg items-center"
+                className="grid grid-flow-col gap-4 bg-base-300 my-3 rounded-lg items-center"
               >
-                <div className="max-w-56">
-                  <img alt="photo" src={photoUrl} className="rounded-full" />
+                <div className="max-w-36">
+                  <img alt="photo" src={photoUrl} className="rounded-md" />
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold">
-                    {firstName + " " + lastName}
-                  </h2>
-                  <p className="font-light my-2">{about}</p>
-                  {gender && <p>Gender: {gender}</p>}
-                  {age && <p>Age: {age}</p>}
-                </div>
-                <div className="flex flex-col">
-                  <button
-                    className="btn btn-outline btn-accent my-2"
-                    onClick={() => handleRequestReview("accepted", request._id)}
-                  >
-                    Accept
-                  </button>
-                  <button
-                    className="btn btn-outline btn-secondary"
-                    onClick={() => handleRequestReview("rejected", request._id)}
-                  >
-                    Reject
-                  </button>
+                <div className="p-5">
+                  <div>
+                    <h2 className="text-xl font-semibold">
+                      {firstName + " " + lastName + ", " + age}
+                    </h2>
+                    <p className="font-light my-2">{about}</p>
+                    {gender && <p>Gender: {gender}</p>}
+                  </div>
+                  <div className="flex items-center gap-5">
+                    <button
+                      className="btn btn-outline btn-accent my-2"
+                      onClick={() =>
+                        handleRequestReview("accepted", request._id)
+                      }
+                    >
+                      Accept ✅
+                    </button>
+                    <button
+                      className="btn btn-outline btn-secondary"
+                      onClick={() =>
+                        handleRequestReview("rejected", request._id)
+                      }
+                    >
+                      Reject ❌
+                    </button>
+                  </div>
                 </div>
               </div>
             );

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UserCard from "./UserCard";
 import axios from "axios";
 import { BASE_BACKEND_URL } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "./utils/userSlice";
+import UserCard from "./UserCard";
 import { ErrorToast, SuccessToast } from "./utils/UtillComponents";
 
 const EditProfile = () => {
@@ -16,7 +16,7 @@ const EditProfile = () => {
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   const [about, setAbout] = useState(user.about);
   const [skills, setSkills] = useState(user.skills ? user.skills : []);
-  const [error, setError] = useState();
+  const [error, setError] = useState("");
   const [showUpdateSuccessToast, setShowUpdateSuccessToast] = useState(false);
   const [showUpdateErrorToast, setShowUpdateErrorToast] = useState(false);
   const dispatch = useDispatch();
@@ -40,9 +40,14 @@ const EditProfile = () => {
     }
   };
 
+  const handleAddingSkills = (skills) => {
+    const skillsArr = skills.split(" ");
+    setSkills(skillsArr);
+  };
+
   return (
     <div className="flex justify-center items-center">
-      <fieldset className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box mx-10">
+      <fieldset className="fieldset bg-base-200 border border-base-300 p-4 rounded-box mx-10">
         <legend className="fieldset-legend">Edit Profile</legend>
 
         <label className="fieldset-label">First Name</label>
@@ -60,24 +65,31 @@ const EditProfile = () => {
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        <label className="fieldset-label">Age</label>
-        <input
-          type="number"
-          className="input"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        />
-        <label className="fieldset-label">Gender</label>
-        <select
-          className="select"
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-        >
-          <option disabled={true}>Pick one..</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Others</option>
-        </select>
+        <div className="flex gap-3">
+          <div>
+            <label className="fieldset-label">Age</label>
+            <input
+              type="number"
+              className="input"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="fieldset-label">Gender</label>
+            <select
+              className="select"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <option disabled={true}>Pick one..</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+
         <label className="fieldset-label">About</label>
         <textarea
           className="textarea h-24"
@@ -92,17 +104,25 @@ const EditProfile = () => {
           value={photoUrl}
           onChange={(e) => setPhotoUrl(e.target.value)}
         />
-        <p className="text-red-500 my-2 font-bold">{error}</p>
-        {/* <label className="fieldset-label">Skills</label>
-        <input type="text" className="input" value={skills} onChange={() => setSkills(e.target.value)}/> */}
+        {error.length > 0 && (
+          <p className="text-red-500 my-2 font-bold">{error}</p>
+        )}
+        <label className="fieldset-label">Skills</label>
+        <input
+          placeholder="Enter your skills.."
+          type="text"
+          className="input"
+          value={skills.join(" ")}
+          onChange={(e) => handleAddingSkills(e.target.value)}
+        />
         <button
-          className="p-2 bg-pink-400 hover:bg-pink-600 rounded-lg"
+          className="p-2 bg-primary hover:bg-purple-600 rounded-lg font-semibold"
           onClick={handleUserEdit}
         >
           Update
         </button>
         <button
-          className="p-2 bg-red-500 hover:bg-red-600 rounded-lg"
+          className="p-2 bg-red-500 hover:bg-red-600 rounded-lg font-semibold"
           onClick={() => navigate("/profile")}
         >
           Cancel update

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_BACKEND_URL } from "../constants";
 
 const Connection = () => {
@@ -36,25 +36,40 @@ const Connection = () => {
         <h1 className="text-3xl text-white my-3">Connections</h1>
       </div>
       {connections && (
-        <div className="w-2/3 flex-col flex justify-center mt-4">
+        <div className="w-[55%] flex-col flex justify-center mt-4">
           {connections.map((connection) => {
-            const { firstName, lastName, about, age, gender, photoUrl } =
+            const { firstName, lastName, skills, age, gender, photoUrl } =
               connection;
             return (
               <div
                 key={firstName}
-                className="grid grid-flow-col gap-4 bg-base-300 my-3 p-2 rounded-lg items-center"
+                className="grid grid-flow-col gap-2 bg-base-300 my-3 rounded-lg items-center"
               >
-                <div className="max-w-56">
-                  <img alt="photo" src={photoUrl} className="rounded-full" />
+                <div className="max-w-30">
+                  <img alt="photo" src={photoUrl} className="rounded-md" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold">
-                    {firstName + " " + lastName}
-                  </h2>
-                  <p className="font-light my-2">{about}</p>
-                  {gender && <p>Gen: {gender}</p>}
-                  {age && <p>Age: {age}</p>}
+                  <div>
+                    <h2 className="text-xl font-semibold">
+                      {firstName + " " + lastName + ", " + age}
+                    </h2>
+                    {gender && <p>{gender}</p>}
+                  </div>
+                  <div className="flex gap-2 flex-wrap mt-5">
+                    {skills.map((skill, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="badge badge-soft badge-accent"
+                        >
+                          #{skill}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div>
+                  <button className="btn btn-primary">Chat 💬</button>
                 </div>
               </div>
             );
