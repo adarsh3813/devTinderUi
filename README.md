@@ -1,8 +1,8 @@
-Tinder for Developers
+#Tinder for Developers
 
 Tinder for Developers is a matchmaking app that helps developers find collaborators, mentors, or teammates based on their skills, interests, and project needs. Built using React, this app provides an intuitive swipe-based interface for making connections in the tech community.
 
-Features
+##Features
 
 🔥 Swipe Left/Right - Like or Pass on potential developer matches.
 
@@ -16,7 +16,7 @@ Features
 
 🔍 Search & Filter - Search by tech stacks, experience level, or collaboration type.
 
-Tech Stack
+##Tech Stack
 
 Frontend: React, Tailwind CSS
 
@@ -28,9 +28,10 @@ Authentication: Firebase Auth / JWT
 
 Real-time Chat: Socket.io / Firebase Firestore
 
-Hosting: Vercel / Netlify (Frontend), Heroku / DigitalOcean (Backend)
+##Hosting:
+AWS EC2
 
-Installation & Setup
+##Installation & Setup
 
 Clone the repository:
 
@@ -49,7 +50,7 @@ npm start
 
 Open http://localhost:3000 in your browser.
 
-Contribution
+##Contribution
 
 Want to contribute? Follow these steps:
 
